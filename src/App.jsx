@@ -17,10 +17,8 @@ const routes = [
     sidebar: () => <div>Gadgets</div>,
     main: () => (
       <div>
-      <h2>
-      Gadgets
-      </h2>
-        <ProductsContainer />
+      <h2>Gadgets</h2>
+        <ProductsContainer type="gadget"/>
       </div>
     )
   },
@@ -29,10 +27,8 @@ const routes = [
     sidebar: () => <div>body</div>,
     main: () => (
       <div>
-      <h2>
-      Body
-      </h2>
-        <ProductsContainer />
+      <h2>Body</h2>
+      <ProductsContainer type="body"/>
       </div>
     )
   },
@@ -41,10 +37,8 @@ const routes = [
     sidebar: () => <div>food</div>,
     main: () => (
       <div>
-      <h2>
-      Food
-      </h2>
-        <ProductsContainer />
+      <h2>Food</h2>
+        <ProductsContainer type="food"/>
       </div>
     )
   }

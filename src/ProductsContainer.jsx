@@ -1,5 +1,5 @@
 //Container Component
-import React from 'react'
+import React from "react";
 
 class ProductsContainer extends React.Component {
   constructor(props) {
@@ -7,19 +7,20 @@ class ProductsContainer extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
+      productType: props.type,
       items: []
     };
   }
 
   componentDidMount() {
-    fetch("http://www.reddit.com/search.json?q=ferrari")
+    fetch("https://my.api.mockaroo.com/products.json?key=76823bc0")
       .then(res => res.json())
       .then(
         result => {
-          console.log(result)
+          console.log("here",result);
           this.setState({
             isLoaded: true,
-            items: result.data.children
+            items: result
           });
         },
         error => {
@@ -39,13 +40,23 @@ class ProductsContainer extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <ul>
-          {items.map(item => (
-            <li key={item.data.id}>
-              {item.data.created} {item.data.permalink}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h3>{this.state.productType}</h3>
+          <div className="row">
+              {items.map(item => (
+                <div className="col-sm-4" key={item.id}>
+                  <img
+                    src={item.image}
+                    alt="Fake Image"
+                    height="150"
+                    width="150"
+                  />
+                  <p>{item.product_name}</p>
+                  <p>${item.price}</p>
+                </div>
+              ))}
+          </div>
+        </div>
       );
     }
   }
