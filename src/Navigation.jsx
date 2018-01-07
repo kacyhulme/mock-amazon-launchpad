@@ -6,14 +6,20 @@ class Navigation extends React.Component {
     return (
       <div className="Navigation">
         <ul className="nav nav-pills">
-          <li role="presentation" className="active">
-            <Link to="/">Gadgets</Link>
+          <li role="presentation">
+            <Link to="/">Home</Link>
+          </li>
+          <li role="presentation">
+            <Link to="/gadgets">Gadgets</Link>
           </li>
           <li role="presentation">
            <Link to="/body">Body</Link>
           </li>
           <li role="presentation">
             <Link to="/food">Food</Link>
+          </li>
+           <li role="presentation">
+            <Link to="/toys">Toys</Link>
           </li>
         </ul>
       </div>
