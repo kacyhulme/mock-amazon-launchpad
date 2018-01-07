@@ -13,7 +13,6 @@ const App = () => (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Mock Amazon Launchpad</h2>
         </div>
         <p className="App-intro" />
       </div>

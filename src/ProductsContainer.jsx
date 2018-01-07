@@ -1,7 +1,7 @@
 //Container Component
 import React from "react";
 import ProductDetails from "./ProductDetails";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 class ProductsContainer extends React.Component {
   constructor(props) {
@@ -197,7 +197,11 @@ class ProductsContainer extends React.Component {
   showDetails() {
     console.log("words");
     <div>
-      <Route path="/productdetails/:id" component={ProductDetails} />
+      <Route
+        exact
+        path="/productdetails/:id"
+        render={props => <ProductDetails products={this.state.items} />}
+      />
     </div>;
   }
 
@@ -210,27 +214,60 @@ class ProductsContainer extends React.Component {
     } else {
       return (
         <div>
-          <h1 style={{ textTransform: "capitalize" }}>{this.state.category}</h1>
-          <div className="row">
+          <div class="container">
+            <header class="jumbotron my-4">
+              <h1 class="display-3">Mock Amazon Launchpad</h1>
+              <p class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa,
+                ipsam, eligendi, in quo sunt possimus non incidunt odit vero
+                aliquid similique quaerat nam nobis illo aspernatur vitae fugiat
+                numquam repellat.
+              </p>
+              <a href="#" class="btn btn-primary btn-lg">
+                Buy Now!
+              </a>
+            </header>
+
+            <div>
             {items.map(item => (
-              <div
-                onClick={this.showDetails}
-                className="col-sm-4"
-                key={item.id}
-              >
-                <img
-                  src={item.image}
-                  alt="Fake Image"
-                  height="150"
-                  width="150"
-                />
-                <Link to={`/productdetails/${item.id}`}>
-                  {item.product_name}
-                </Link>
-                <p>${item.price}</p>
+
+
+              <div class="col-lg-3 col-md-4 col-sm-2" style={{height: "400px"}}>
+                <div class="card" style={{textAlign:"center", border:"1px solid #eee", margin:"5px",padding:"5px"}}>
+                  <img
+                    class="card-img-top"
+                    src={item.image}
+                    alt="Fake Image" height="130" width="130"
+                  />
+                  <div class="card-body">
+                    <h4 style={{height: "40px"}}><Link to={`/productdetails/${item.id}`}>{item.product_name} </Link></h4>
+                    <p class="card-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Explicabo magni sapiente, tempore debitis beatae culpa
+                      natus architecto.
+                    </p>
+                    <p>${item.price}</p>
+                  </div>
+                  <div class="card-footer">
+                    <a href="#" class="btn btn-primary">
+                      Buy Now!
+                    </a>
+                  </div>
+                  <br/>
+                </div>
               </div>
+              
             ))}
           </div>
+ 
+          <footer class="py-5 bg-dark">
+            <div class="container">
+              <p class="m-0 text-center text-white">
+                Copyright &copy; Mock Amazon Launchpad 2017
+              </p>
+            </div>
+          </footer>
+        </div>
         </div>
       );
     }
