@@ -7,19 +7,19 @@ class Navigation extends React.Component {
       <div className="Navigation">
         <ul className="nav nav-pills">
           <li role="presentation">
-            <Link to="/">Home</Link>
+            <Link to="/category">Home</Link>
           </li>
           <li role="presentation">
-            <Link to="/gadgets">Gadgets</Link>
+            <Link to="/category/gadgets">Gadgets</Link>
           </li>
           <li role="presentation">
-           <Link to="/body">Body</Link>
+            <Link to="/category/body">Body</Link>
           </li>
           <li role="presentation">
-            <Link to="/food">Food</Link>
+            <Link to="/category/food">Food</Link>
           </li>
-           <li role="presentation">
-            <Link to="/toys">Toys</Link>
+          <li role="presentation">
+            <Link to="/category/toys">Toys</Link>
           </li>
         </ul>
       </div>
