@@ -1,7 +1,6 @@
 //Container Component
 import React from "react";
-import Product from "./Product";
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 class Category extends React.Component {
   constructor(props) {
@@ -65,7 +64,7 @@ class Category extends React.Component {
           <img
             className="card-img-top"
             src={product.image}
-            alt="Fake Image"
+            alt="Hello"
             height="130"
             width="130"
           />

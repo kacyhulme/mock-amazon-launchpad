@@ -1,8 +1,8 @@
-import Category from "./Category.jsx";
-import Navigation from "./Navigation.jsx";
-import Product from "./Product.jsx";
-import logo from "./amazon-logo.png";
-import "./App.scss";
+import Category from "./components/Category.jsx";
+import Navigation from "./components/Navigation.jsx";
+import Product from "./components/Product.jsx";
+import logo from "./assets/amazon-logo.png";
+import "./styles/App.scss";
 
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
