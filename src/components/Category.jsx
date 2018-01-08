@@ -1,6 +1,6 @@
 //Container Component
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Category extends React.Component {
   constructor(props) {
@@ -12,41 +12,35 @@ class Category extends React.Component {
     };
   }
 
-  getProducts(category) {
-    const products = window.Products.filter(p => p.category === category);
-    this.setState({
-      products
-    });
-  }
-
+  // update on route change
   componentWillReceiveProps(nextProps) {
     const category = nextProps.match.params.category;
     this.getProducts(category);
   }
 
+  // first page load (landing page)
   componentDidMount() {
     const category = this.props.match.params.category;
     this.getProducts(category);
   }
 
-  // componentDidMount() {
-  //   fetch("https://my.api.mockaroo.com/products.json?key=76823bc0")
-  //     .then(res => res.json())
-  //     .then(
-  //       result => {
-  //         this.setState({
-  //           isLoaded: true,
-  //           products: result
-  //         });
-  //       },
-  //       error => {
-  //         this.setState({
-  //           isLoaded: true,
-  //           error
-  //         });
-  //       }
-  //     );
-  // }
+  getProducts(category) {
+    fetch("/products.json")
+      .then(res => res.json())
+      .then(products => {
+        products = products.filter(p => p.category === category);
+        this.setState({
+          isLoaded: false,
+          products
+        });
+      })
+      .catch(error => {
+        this.setState({
+          isLoaded: false,
+          error
+        });
+      });
+  }
 
   renderProduct(product) {
     return (
@@ -97,7 +91,7 @@ class Category extends React.Component {
     const { error, isLoaded, products } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
+    } else if (isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
