@@ -1,6 +1,6 @@
 //Container Component
 import React from "react";
-import { Link } from "react-router-dom";
+import Detail from "./Detail";
 
 class Category extends React.Component {
   constructor(props) {
@@ -42,50 +42,6 @@ class Category extends React.Component {
       });
   }
 
-  renderProduct(product) {
-    return (
-      <div className="col-lg-3 col-md-4 col-sm-4" key={product.id}>
-        <div
-          className="card"
-          style={{
-            textAlign: "center",
-            border: "1px solid #eee",
-            margin: "5px",
-            padding: "5px",
-            minHeight: "410px"
-          }}
-        >
-          <img
-            className="card-img-top"
-            src={product.image}
-            alt="Hello"
-            height="130"
-            width="130"
-          />
-          <div className="card-body">
-            <h4 style={{ minHeight: "20px" }}>
-              <Link to={`/products/${product.id}`}>
-                {product.product_name}{" "}
-              </Link>
-            </h4>
-            <p className="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Explicabo magni sapiente, tempore debitis beatae culpa natus
-              architecto.
-            </p>
-            <p>${product.price}</p>
-          </div>
-          <div className="card-footer">
-            <a href="#" className="btn btn-primary">
-              Buy Now!
-            </a>
-          </div>
-          <br />
-        </div>
-      </div>
-    );
-  }
-
   render() {
     const category = this.props.match.params.category;
     const { error, isLoaded, products } = this.state;
@@ -112,7 +68,9 @@ class Category extends React.Component {
 
             <div>
               <h3 style={{ textAlign: "left" }}>{category}</h3>
-              {products.map(product => this.renderProduct(product))}
+              {products.map(product => (
+                <Detail product={product} key={product.id} />
+              ))}
             </div>
             <footer className="py-5 bg-dark">
               <div className="container">

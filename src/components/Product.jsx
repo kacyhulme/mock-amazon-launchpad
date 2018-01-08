@@ -1,4 +1,5 @@
 import React from "react";
+import Detail from "./Detail";
 
 class Product extends React.Component {
   constructor(props) {
@@ -8,22 +9,32 @@ class Product extends React.Component {
     };
   }
 
+  getProduct(productId) {
+    fetch("/products.json")
+      .then(res => res.json())
+      .then(products => {
+        const product = products.filter(p => p.id.toString() === productId)[0];
+        this.setState({
+          product
+        });
+      })
+      .catch(error => {
+        this.setState({});
+      });
+  }
+
   componentDidMount() {
     const productId = this.props.match.params.id;
-    const product = window.Products.filter(p => p.id === productId)[0];
-    this.setState({
-      product: product
-    });
+    this.getProduct(productId);
   }
 
   render() {
-    console.log(this.props);
     const product = this.state.product;
     if (!product) {
       return null;
     }
 
-    return <div>{product.product_name}</div>;
+    return <Detail product={product} />;
   }
 }
 
