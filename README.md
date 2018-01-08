@@ -1,3 +1,4 @@
+* compile css `npm run build-css`
 * run with `npm start`
 
 * created with create-react-app
